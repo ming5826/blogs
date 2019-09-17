@@ -1,11 +1,11 @@
 # Site settings
-title: Jlcao Blog
-SEOTitle: 曹杰乐的博客 | Jlcao Blog
+title: Mingyue Blog
+SEOTitle: 明月的博客 | mingyue5826 Blog
 header-img: img/root/home-bg-fj.jpg
 email:  caojiele1225@126.com
-description: "关于程序与设计以及架构 | 曹杰乐，Java & Mobile Lover，Software Engineer | 这里是 @caojiele 曹杰乐 的个人博客，与你一起发现更大的世界。"
-keyword: "曹杰乐, Jiele曹杰乐, Jiele, Jack-cao, @caojiele, 曹杰乐的博客, Jlcao Blog, 博客, 个人网站, 互联网, Java, node.js, 后端, 开发"
-url: "https://caojiele.com"              # your host, for absolute URL
+description: "测试 | 明月，Java & Linux，test | 这里是 @mingyue5826 明月 的个人博客，与你一起发现更大的世界。"
+keyword: "明月, Mingyue,  @mingyue5826, 明月的博客, mingyue5826 Blog, 博客, 个人网站, Java, Linux"
+url: "http://blog.ming5826.xyz"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -13,11 +13,11 @@ future: true
 
 # SNS settings
 RSS: true
-zhihu_username:     wang-le-6-62
-github_username:    caojiele
-linkedin_username:  Jack-cao-387159129  
+zhihu_username:     mingyue5826
+github_username:    ming5826
+#linkedin_username:    
 #weibo_username:    
-#twitter_username:   
+twitter_username:   mingyue5826
 #facebook_username:  
 
 # Build settings
@@ -51,18 +51,18 @@ kramdown:
 # gitalk settings
 gitalk:
    enable: true
-   owner: caojiele
-   repo: caojiele.github.io
-   clientID: 71d864566f502c0a73ba
-   clientSecret: 0275406b08f33cc8118d02eb9332cfb707f13bf0
-   admin: caojiele
+   owner: ming5826
+   repo: ming5826.github.io
+   clientID: 2819bb4121fc61821145
+   clientSecret: a516ef408ed2ef205bda8b2e98f275e76b81ede9
+   admin: ming5826
 
 # ---------------- #
 #      Search      #
 # ---------------- #
 simple_jekyll_search:
     # 是否支持全文搜索
-    fulltext: false
+    fulltext: true
     # 最多显示多少条搜索结果
     limit: 10
 
@@ -97,28 +97,7 @@ page-mathjax: false
 # Friends
 friends: [
     {
-        title: "黄玄的博客",
-        href: "https://huangxuan.me/"
-    },{
-        title: "许雪里的博客",
-        href: "http://www.xuxueli.com/blog/#/"
-    },{
-        title: "小马哥的技术博客",
-        href: "https://mercyblitz.github.io/"
-    },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
-    },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "一之笔的博客",
-        href: "https://yizibi.github.io"
+        title: "然然的博客",
+        href: "https://blog.tengshe789.tech/"
     }
 ]
