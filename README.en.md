@@ -1,6 +1,6 @@
 # Jlcao Blog
 
-### [中文文档](README.zh.md)
+### [中文文档](README.md)
 
 ### [View Live Jlcao Blog &rarr;](https://caojiele.com)
 
@@ -141,6 +141,7 @@ featured-condition-size: 1     # A tag will be featured if the size of it is mor
 
 The only one thing need to be paid attention to is the `featured-condition-size`: A tag will be featured if the size of it is more than this condition value.  
 Internally, a condition template `{% if tag[1].size > {{site.featured-condition-size}} %}` is used to do the filter.
+`{% endif %}`
 
 
 #### Friends
