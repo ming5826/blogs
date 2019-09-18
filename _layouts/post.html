@@ -89,13 +89,13 @@ layout: default
                 <!-- disqus 评论框 end -->
 <!--                 {% endif %} -->
 
-<!--                 {% if site.netease_comment %} -->
+                {% if site.netease_comment %} 
                 <!-- 网易云跟帖 评论框 start -->
-<!--                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div> -->
+                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div> 
                 <!-- 网易云跟帖 评论框 end -->
-<!--                 {% endif %} -->
+                {% endif %} 
 		
-		<!--   gitalk       -->
+		<!--   gitalk评论框   -->
                 {% if site.gitalk %}
                 <div class="comment">
                     {% include comments.html %}
@@ -141,9 +141,9 @@ layout: default
   {% include mathjax_support.html %}
 {% endif %}
 
-<!-- {% if site.netease_comment %} -->
+ {% if site.netease_comment %} 
 <!-- 网易云跟帖JS代码 start -->
-<!-- <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 <script>
   var cloudTieConfig = {
     url: document.location.href, 
@@ -155,7 +155,7 @@ layout: default
   Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
 </script> -->
 <!-- 网易云跟帖JS代码 end -->
-<!-- {% endif %} -->
+ {% endif %} 
 
 
 {% if site.disqus_username %}

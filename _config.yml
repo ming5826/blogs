@@ -2,7 +2,7 @@
 title: Mingyue Blog
 SEOTitle: 明月的博客 | mingyue5826 Blog
 header-img: img/root/home-bg-fj.jpg
-email:  caojiele1225@126.com
+email:  1441656607@qq.com
 description: "测试 | 明月，Java & Linux，test | 这里是 @mingyue5826 明月 的个人博客，与你一起发现更大的世界。"
 keyword: "明月, Mingyue,  @mingyue5826, 明月的博客, mingyue5826 Blog, 博客, 个人网站, Java, Linux"
 url: "http://blog.ming5826.xyz"              # your host, for absolute URL
@@ -52,9 +52,9 @@ kramdown:
 gitalk:
    enable: true
    owner: ming5826
-   repo: ming5826.github.io
-   clientID: 2819bb4121fc61821145
-   clientSecret: a516ef408ed2ef205bda8b2e98f275e76b81ede9
+   repo: blog.ming5826.xyz
+   clientID: 3eff99bd4686f472c4a0
+   clientSecret: 9aa96b3da1bbf60cf3ea155a42aaabaf5af6f981
    admin: ming5826
 
 # ---------------- #
@@ -76,12 +76,12 @@ ga_track_id: 'UA-120526213-1'            # Format: UA-xxxxxx-xx
 ga_domain: auto
 
 # Baidu Analytics
-baidu_analytics: 'f449fbb4d143d156c197d3a7a38a779d'
+baidu_analytics: 'acf228f78e775a8f670ed54c440de345'
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: " When you look long into an abyss,the abyss looks into you<br> 当你凝视深渊时,深渊也在凝视你"
-sidebar-avatar: https://cdn.nlark.com/yuque/0/2019/jpeg/338441/1561301140772-a4c43da7-3921-48bf-8c92-f57c4fdc97d9.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://images.cnblogs.com/cnblogs_com/mingyue5826/1435875/o_head.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
