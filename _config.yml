@@ -81,7 +81,7 @@ baidu_analytics: 'acf228f78e775a8f670ed54c440de345'
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: " When you look long into an abyss,the abyss looks into you<br> 当你凝视深渊时,深渊也在凝视你"
-sidebar-avatar: https://images.cnblogs.com/cnblogs_com/mingyue5826/1435875/o_head.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/root/o_head.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
