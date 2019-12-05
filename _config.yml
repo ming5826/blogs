@@ -1,6 +1,6 @@
 # Site settings
 title: Mingyue Blog
-SEOTitle: 明月的博客 | mingyue5826 Blog
+SEOTitle: 明月的博客 | mingyue Blog
 header-img: img/root/home-bg-fj.jpg
 email:  1441656607@qq.com
 description: "测试 | 明月，Java & Linux，test | 这里是 @mingyue5826 明月 的个人博客，与你一起发现更大的世界。"
@@ -14,7 +14,7 @@ future: true
 # SNS settings
 RSS: true
 zhihu_username:     mingyue5826
-github_username:    ming5826
+github_username:    mingyue5826
 #linkedin_username:    
 #weibo_username:    
 twitter_username:   mingyue5826
@@ -97,7 +97,7 @@ page-mathjax: false
 # Friends
 friends: [
     {
-        title: "然然的博客",
+        title: "tengshe789",
         href: "https://blog.tengshe789.tech/"
     }
 ]
