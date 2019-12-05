@@ -1,0 +1,232 @@
+I"	%<h1 id="一款内网穿透工具frp">一款内网穿透工具–FRP</h1>
+<h1 id="前言">前言</h1>
+
+<p>想对Windows的机器进行==远程控制==，有这几种方式</p>
+
+<ol>
+  <li>具有公网IP的直接使用公网IP</li>
+  <li>使用Teamview工具进行远程控制</li>
+  <li>使用向日葵工具进行远程控制（不充钱操作有点卡）</li>
+</ol>
+
+<p>这里推荐使用内网穿透工具——FRP，以及一台云服务器当做服务端，进行简单配置后即可远程访问</p>
+
+<blockquote>
+  <p>FRP软件下载地址：https://github.com/fatedier/frp/releases</p>
+</blockquote>
+
+<h1 id="服务端配置">服务端配置</h1>
+
+<p>配置 FRP 服务端的前提条件是需要一台具有<strong>公网 IP **的设备，得益于 **FRP</strong> 是 Go 语言开发的，具有良好的跨平台特性。你可以在 Windows、Linux、MacOS、ARM等几乎任何可联网设备上部署。</p>
+
+<ul>
+  <li>一台云服务器，比如 CentOS7</li>
+  <li>一个公网IP，带宽视情况而定，公网IP地址以 <code class="highlighter-rouge">117.73.3.210</code>为例</li>
+</ul>
+
+<h2 id="服务端下载frp">服务端下载FRP</h2>
+
+<p>服务端下载Linux版的FRP工具，比如<code class="highlighter-rouge">frp_0.30.0_linux_amd64.tar.gz</code>，为了方便管理，这里进行了重命名为frp</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>wget https://github.com/fatedier/frp/releases/download/v0.30.0/frp_0.30.0_linux_amd64.tar.gz
+tar -zxvf frp_0.30.0_linux_amd64.tar.gz
+mv frp_0.30.0_linux_amd64 frp
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>进入frp目录： <code class="highlighter-rouge">cd frp</code>,如图</p>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/frp-linux-install.png" alt="" /></p>
+
+<h2 id="配置文件">配置文件</h2>
+
+<p>文件介绍：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>文件名</th>
+      <th>功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>frpc</td>
+      <td>客户端应用程序</td>
+    </tr>
+    <tr>
+      <td>frps</td>
+      <td>服务端应用程序</td>
+    </tr>
+    <tr>
+      <td>frpc.ini</td>
+      <td>客户端配置文件-精简版</td>
+    </tr>
+    <tr>
+      <td>frps.ini</td>
+      <td>服务端配置文件-精简版</td>
+    </tr>
+    <tr>
+      <td>frpc_full.ini</td>
+      <td>客户端配置文件-完整版</td>
+    </tr>
+    <tr>
+      <td>frps_full.ini</td>
+      <td>服务配置文件-完整版</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这里进行配置时使用精简版的配置文件 <code class="highlighter-rouge">frps.ini</code></p>
+
+<p>查看编辑配置文件，<code class="highlighter-rouge">vim frps.ini</code> ,如图，这里的port可以自己指定，比如我使用7000（默认）</p>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/frpc-ini.png" alt="" /></p>
+
+<h2 id="启动服务端frp">启动服务端FRP</h2>
+
+<p>进入目录，指定配置文件<code class="highlighter-rouge">frps.ini</code>启动服务端程序：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>./frps -c ./frps.ini
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>也可以使用后台不挂断的方式启动，并且指定日志文件</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>nohup ./frps -c ./frps.ini &amp;&gt; /var/log/frps.log &amp;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="客户端配置">客户端配置</h1>
+
+<p>客户端即要被远程访问的机器，比如处于公司内网的办公电脑，为Windows操作系统</p>
+
+<h2 id="开启远程控制功能">开启远程控制功能</h2>
+
+<blockquote>
+  <p>首先要开启远程控制功能，进入控制面板 <strong>控制面板\所有控制面板项\系统</strong>(或者直接右键<strong>此电脑</strong>，点击<strong>属性</strong>)
+点击<strong>高级系统设置</strong>，点击<strong>远程</strong>，选择<strong>允许远程访问</strong>，点击确定</p>
+</blockquote>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/win-open3389.png" alt="" /></p>
+
+<h2 id="客户端下载frp">客户端下载FRP</h2>
+
+<p>客户端下载Windows版本的FRP工具，比如<code class="highlighter-rouge">frp_0.30.0_windows_amd64.zip</code></p>
+
+<p><a href="https://github.com/fatedier/frp/releases/download/v0.30.0/frp_0.30.0_windows_amd64.zip">下载地址</a></p>
+
+<p>下载后解压，可以重命名一下，进入文件目录，如图</p>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/frp-windows-install.png" alt="" /></p>
+<h2 id="配置文件-1">配置文件</h2>
+
+<p>文件介绍如服务端：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>文件名</th>
+      <th>功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>frpc.exe</td>
+      <td>客户端应用程序</td>
+    </tr>
+    <tr>
+      <td>frps.exe</td>
+      <td>服务端应用程序</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这里的配置文件使用精简版的</p>
+
+<p>编辑并保存 <code class="highlighter-rouge">frpc.ini</code> ，如下</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>[common]
+server_addr = 117.73.3.210  #服务端公网IP地址
+server_port = 7000  #服务端开启的端口
+
+[3389]
+type = tcp
+local_ip = 192.168.1.9   #客户端的ip地址，可以通过打开cmd执行`ipconfig`查看
+local_port = 3389   #Windows远程控制端口，无需修改
+remote_port = 33211  #远程端口，这里自己设置一个不常用的端口
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="启动客户端">启动客户端</h2>
+
+<p>进入目录，打开CMD命令行，通过指定配置文件<code class="highlighter-rouge">frpc.ini</code>启动客户端，如下图：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>.\frpc.exe -c .\frpc.ini
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/frp-win-start.png" alt="" /></p>
+
+<h1 id="访问">访问</h1>
+
+<blockquote>
+  <p>此时，远程控制已经配置完成，接下来就可以访问了
+访问地址为服务端的公网IP地址加上客户端配置文件指定的remote_port，例如 <code class="highlighter-rouge">117.73.3.210:33211</code></p>
+</blockquote>
+
+<h2 id="windows操作系统远程控制">Windows操作系统远程控制</h2>
+
+<p>使用Windows操作系统进行远程控制，例如家里的电脑</p>
+
+<p>打开Windows的远程桌面连接工具，按快捷键 <code class="highlighter-rouge">Win + R</code>，输入 <code class="highlighter-rouge">mstsc</code></p>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/win_r-mstsc.png" alt="" /></p>
+
+<p>输入远程主机地址和用户名，例如 <code class="highlighter-rouge">117.73.3.210:33211</code>和我办公电脑的用户名</p>
+
+<p><img src="https://mingyue-1300243549.cos.ap-chengdu.myqcloud.com/picgo/20191205/win-new3389.png" alt="" /></p>
+
+<p>点击连接</p>
+
+<h2 id="手机远程控制">手机远程控制</h2>
+
+<p>下载微软的一个远程控制软件 <code class="highlighter-rouge">RD Client</code> 手机版
+<a href="https://apks-1300243549.cos.ap-chengdu.myqcloud.com/CD%20Client.apk">下载地址</a></p>
+
+<ol>
+  <li>点击软件右上角 <code class="highlighter-rouge">+</code> 号</li>
+  <li>点击 <code class="highlighter-rouge">Desktop</code></li>
+  <li>PC name输入公网IP地址和remote_port，例如，117.73.3.210:33211</li>
+  <li>User name输入被控制的电脑的登录用户名</li>
+  <li>点击右上角save</li>
+  <li>点击主页的远程桌面即可进行远程控制</li>
+</ol>
+
+<h1 id="frp介绍">FRP介绍</h1>
+
+<p>FRP 全名：Fast Reverse Proxy。FRP 是一个使用 Go 语言开发的高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务。FRP 支持 TCP、UDP、HTTP、HTTPS等协议类型，并且支持 Web 服务根据域名进行路由转发。</p>
+
+<blockquote>
+  <p>FRP 项目地址：https://github.com/fatedier/frp</p>
+</blockquote>
+
+<h2 id="frp-的作用">FRP 的作用</h2>
+
+<p>利用处于内网或防火墙后的机器，对外网环境提供 HTTP 或 HTTPS 服务。</p>
+
+<p>对于 HTTP, HTTPS 服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个 80 端口。</p>
+
+<p>利用处于内网或防火墙后的机器，对外网环境提供 TCP 和 UDP 服务，例如在家里通过 SSH 访问处于公司内网环境内的主机。</p>
+
+<p><a href="https://www.jianshu.com/p/00c79df1aaf0">参考文档</a></p>
+:ET
